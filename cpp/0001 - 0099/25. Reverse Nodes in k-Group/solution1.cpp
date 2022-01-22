@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    /* Time complexity: O(n), space complexity: O(n) */
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* newHead = new ListNode();
         ListNode* node = newHead;
