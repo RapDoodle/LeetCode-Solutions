@@ -18,7 +18,6 @@ public:
             int j = i + 1, k = m - 1;
             while (j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
-                // cout << i << j << k << "\n";
                 if (sum == 0) {
                     vector<int> v{nums[i], nums[j], nums[k]};
                     ans.push_back(v);
