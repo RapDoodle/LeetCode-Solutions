@@ -1,37 +1,17 @@
+const unordered_map<char, vector<char>> letterMap {
+    {'2', {'a', 'b', 'c'}},
+    {'3', {'d', 'e', 'f'}},
+    {'4', {'g', 'h', 'i'}},
+    {'5', {'j', 'k', 'l'}},
+    {'6', {'m', 'n', 'o'}},
+    {'7', {'p', 'q', 'r' , 's'}},
+    {'8', {'t', 'u', 'v'}},
+    {'9', {'w', 'x', 'y' , 'z'}},
+};
+
 class Solution {
 public:
     /* Using backtracking */
-    vector<char> digitToLetters(const char& c) {
-        vector<char> vec;
-        switch (c) {
-            case '2':
-                vec.insert(vec.end(), {'a', 'b', 'c'});
-                break;
-            case '3':
-                vec.insert(vec.end(), {'d', 'e', 'f'});
-                break;
-            case '4':
-                vec.insert(vec.end(), {'g', 'h', 'i'});
-                break;
-            case '5':
-                vec.insert(vec.end(), {'j', 'k', 'l'});
-                break;
-            case '6':
-                vec.insert(vec.end(), {'m', 'n', 'o'});
-                break;
-            case '7':
-                vec.insert(vec.end(), {'p', 'q', 'r' , 's'});
-                break;
-            case '8':
-                vec.insert(vec.end(), {'t', 'u', 'v'});
-                break;
-            case '9':
-                vec.insert(vec.end(), {'w', 'x', 'y' , 'z'});
-                break;
-        }
-        return vec;
-    }
-    
     void backtrack(int i, string cs, const string& digits, vector<string>& results) {
         // Base case: already iterated through every digit
         if (i == digits.length()) {
@@ -40,9 +20,9 @@ public:
         }
         
         // Recursive case
-        vector<char> letters = digitToLetters(digits[i]);
-        for (int j = 0; j < letters.size(); j++) {
-            backtrack(i + 1, cs + letters[j], digits, results);
+        vector<char> letters = letterMap.at(digits[i]);
+        for (const char& letter: letters) {
+            backtrack(i + 1, cs + letter, digits, results);
         }
     }
     
