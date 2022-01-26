@@ -11,35 +11,24 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        ListNode* newHead = new ListNode();
-        newHead->next = head;
-        ListNode* node = newHead;
+        ListNode dummy = ListNode(0, head);
+        ListNode* curr = &dummy;
         
-        while (node != nullptr) {
-            ListNode* l1 = node->next;
+        // Link: curr --> l1 --> l2 --> l3
+        ListNode *l1, *l2, *l3;
+        while (curr != nullptr && 
+               (l1 = curr->next) != nullptr && 
+               (l2 = l1->next) != nullptr) {
+            l3 = l2->next;
             
-            // Check for end of the linked list
-            if (l1 == nullptr)
-                break;
-            
-            // Link: node --> l2 --> l1 --> l3
-            ListNode* l2 = l1->next;
-            if (l2 != nullptr) {
-                // Register l2->next since l2 will be modified
-                ListNode* l3 = l2->next;
-                
-                // Link nodes
-                node->next = l2;
-                l2->next = l1;
-                l1->next = l3;
-                
-                // Move on to the node whose next node is unprocessed
-                node = l1;
-            } else {
-                // If l2 is nullptr, meaning no pair to swap with l1
-                break;
-            }
+            // Link: curr --> l2 --> l1 --> l3
+            curr->next = l2;
+            l2->next = l1;
+            l1->next = l3;
+
+            // Move on to the node whose next node is unprocessed
+            curr = l1;
         }
-        return newHead->next;
+        return dummy.next;
     }
 };
