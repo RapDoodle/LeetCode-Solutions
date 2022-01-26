@@ -10,30 +10,31 @@
  */
 class Solution {
 public:
-    /* The two(three)-pointers approach */
+    /* The two-pointers approach */
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        // i: the node before node j
-        // j: the node to be deleted
-        // k: the leading node (used to look for the last node)
+        ListNode dummy(0, head);
         
-        int j = -n;
-        ListNode *iPtr = nullptr, *jPtr = head, *kPtr = head;
-        while (kPtr != nullptr) {
-            kPtr = kPtr->next;
-            j++;
-            
-            // Only start moving when k - n is positive
-            if (j > 0) {
-                iPtr = jPtr;
-                jPtr = jPtr->next;
-            }
+        // i: the first pointer
+        // j: the second pointer
+        ListNode *iNode = &dummy, *jNode = head;
+        
+        // Create a distance of n from the dummy node (iNode)
+        for (int i = 0; i < n; i++)
+            jNode = jNode->next;
+        
+        // Move iNode and jNode simultaneously until reaching the 
+        // end of the list
+        while (jNode != nullptr) {
+            iNode = iNode->next;
+            jNode = jNode->next;
         }
         
-        if (j == 0)
-            return jPtr->next;  // Delete the first node
-        else
-            iPtr->next = jPtr->next;
+        // Already reached the end of the linked list
+        // Remove the iNode->next
+        ListNode* temp = iNode->next;
+        iNode->next = iNode->next->next;
+        delete temp;
         
-        return head;
+        return dummy.next;
     }
 };
