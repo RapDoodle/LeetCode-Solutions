@@ -11,8 +11,8 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode* head = new ListNode();
-        ListNode* curr = head;
+        ListNode head = ListNode();
+        ListNode* curr = &head;
         while (list1 != nullptr || list2 != nullptr) {
             // If list1 is empty, the remaining items are in list2
             if (list1 == nullptr) {
@@ -41,6 +41,6 @@ public:
         
         // The first node is the dummy node. This avoids explicit check
         // for every iteration
-        return head->next;
+        return head.next;
     }
 };
