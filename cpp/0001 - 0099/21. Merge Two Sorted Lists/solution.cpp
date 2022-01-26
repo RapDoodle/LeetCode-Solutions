@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode head = ListNode();
+        ListNode head;
         ListNode* curr = &head;
         while (list1 != nullptr || list2 != nullptr) {
             // If list1 is empty, the remaining items are in list2
