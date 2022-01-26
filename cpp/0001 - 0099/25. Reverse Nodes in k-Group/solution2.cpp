@@ -10,7 +10,6 @@
  */
 class Solution {
 public:
-    /* Time complexity: O(n), space complexity: O(1) */
     ListNode* reverseKGroup(ListNode* head, int k) {
         // Count the number of nodes in the linked list.
         // Then, by reducing the count after each iteration,
@@ -24,14 +23,14 @@ public:
         }
         
         // The new head of the linked list, a dummy node
-        ListNode* newHead = new ListNode();
+        ListNode dummy;
         
         // The first node in a group (will be the last node
         // after reversed)
         ListNode* gHead = nullptr;
         
         // The node right before gHead in the original order
-        ListNode* gPrev = newHead;
+        ListNode* gPrev = &dummy;
         
         // For each step, link l2 to l1.
         // l3 is a register for l2->next since the value of 
@@ -74,12 +73,12 @@ public:
             //                      l1      l2      l3
             
             // Move the head (the original pointer passed in) to the 
-            // last relinked node's next (l2)
+            // last relinked node's "next" (l2)
             head = l2;
             
             // Connect the last node in the previous group to the head
             // of the current reversed group (the last relinked node).
-            // In the example above, the 3 (l1)
+            // In the example above, it is the 3 (l1)
             gPrev->next = l1;
             
             // The first node in the original order becomes the last node
@@ -100,6 +99,6 @@ public:
         else
             gPrev->next = nullptr;
         
-        return newHead->next;
+        return dummy.next;
     }
 };

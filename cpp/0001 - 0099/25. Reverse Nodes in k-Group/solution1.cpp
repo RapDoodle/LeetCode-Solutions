@@ -12,8 +12,8 @@ class Solution {
 public:
     /* Time complexity: O(n), space complexity: O(n) */
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* newHead = new ListNode();
-        ListNode* node = newHead;
+        ListNode dummy;
+        ListNode* node = &dummy;
         ListNode* checkPoint = nullptr;
         stack<ListNode*> s;
         
@@ -47,6 +47,6 @@ public:
             node->next = nullptr;
         }
         
-        return newHead->next;
+        return dummy.next;
     }
 };
