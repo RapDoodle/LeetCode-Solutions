@@ -5,12 +5,7 @@ public:
         // Initialize an array of size 
         // (s.length() + 1) * (p.length() + 1)
         int m = s.length() + 1, n = p.length() + 1;
-        bool** dp = new bool* [m];
-        for (int i = 0; i < m; i++) {
-            dp[i] = new bool[n];
-            for (int j = 0; j < n; j++)
-                dp[i][j] = 0;
-        }
+        vector<vector<int>> dp(m, vector<int>(n));
 
         dp[0][0] = true;
         for (int i = 1; i < m; i++)

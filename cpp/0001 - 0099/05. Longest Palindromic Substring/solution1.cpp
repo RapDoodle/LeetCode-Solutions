@@ -5,9 +5,7 @@ public:
         int m = s.length(), lo = 0, maxLen = 1;
 
         // Initialize an array of size m * m
-        int** dp = new int* [m];
-        for (int i = 0; i < m; i++)
-            dp[i] = new int[m];
+        vector<vector<int>> dp(m, vector<int>(m));
 
         // Fill all diagonal with 1
         for (int i = 0; i < m; i++)
