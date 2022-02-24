@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /* Improved brute-force */
     bool judgeSquareSum(int c) {
         // When b = 0, we have a^2 = c. Thus, the maximum
         // number allowed for a is a <= sqrt(c) 
