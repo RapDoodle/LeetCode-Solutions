@@ -2,7 +2,7 @@ class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
         int len = flowerbed.size();
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; ++i) {
             // Early-stopping
             if (n <= 0)
                 break;
@@ -18,11 +18,11 @@ public:
                     // If planting the flower in this spot does not
                     // violate the no-adjacent-flowers rule, reduce 
                     // the remaining flower count
-                    n--;
+                    --n;
                     
                     // Skip the next position as the next spot must
                     // voilates the no-adjacent rule
-                    i++;
+                    ++i;
                 }
             }
         }

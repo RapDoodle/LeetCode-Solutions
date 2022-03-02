@@ -7,14 +7,14 @@ public:
 
         // Look for white spaces
         while (s[sPtr] != '\0' && s[sPtr] == ' ')
-            sPtr++;
+            ++sPtr;
 
         // Look for + or -
         if (s[sPtr] != '\0' && (s[sPtr] == '-' || s[sPtr] == '+')) {
             if (s[sPtr] == '-') {
                 sign = -1;
             }
-            sPtr++;
+            ++sPtr;
         }
 
         int ans = 0;
@@ -26,7 +26,7 @@ public:
             if (sign == -1 && (ans < minBound || (ans == minBound && d > 8)))
                 return INT_MIN;
             ans = (ans * 10) + d * sign;
-            sPtr++;
+            ++sPtr;
         }
 
         return ans;

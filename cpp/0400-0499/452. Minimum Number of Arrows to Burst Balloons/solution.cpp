@@ -31,7 +31,7 @@ public:
         //                      ^ i=out of bound
         //                      |
         int prevEnd = points[0][1], arrows = 1;
-        for (int i = 1; i < points.size(); i++) {
+        for (int i = 1; i < points.size(); ++i) {
             if (points[i][0] > prevEnd) {
                 // Should shoot an arrow since it is out of the range
                 // of the previous ballon. We have maximized the number
@@ -40,7 +40,7 @@ public:
                 // |-----|       newEnd
                 //       ^  |-------|
                 //       |
-                arrows++;
+                ++arrows;
                 
                 // Already shot the previous group of ballons
                 prevEnd = points[i][1];

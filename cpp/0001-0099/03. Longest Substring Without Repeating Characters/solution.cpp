@@ -8,7 +8,7 @@ public:
             if (umap.find(s[i]) != umap.end() && umap[s[i]] >= i - count) {
                 count = i - umap[s[i]];
             } else {
-                count++;
+                ++count;
                 if (count > maxCount) {
                     maxCount = count;
                 }

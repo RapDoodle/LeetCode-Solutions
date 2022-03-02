@@ -6,9 +6,9 @@ public:
         while (lPtr < rPtr) {
             int area = min(height[lPtr], height[rPtr]) * (rPtr-lPtr);
             if (height[lPtr] >= height[rPtr])
-                rPtr--;
+                --rPtr;
             else
-                lPtr++;
+                ++lPtr;
             if (area > maxArea)
                 maxArea = area;
         }

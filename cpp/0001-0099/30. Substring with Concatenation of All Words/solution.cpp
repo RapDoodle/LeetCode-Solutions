@@ -17,7 +17,7 @@ public:
         int numWords = words.size();
         
         // Loop over the substrings that start from index 0, 1, ..., n
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             int count = 0;
             unordered_map<string, int> localStates = states;
             
@@ -27,7 +27,7 @@ public:
                 
                 localStates[currStr]--;
                 if (localStates[currStr] >= 0)
-                    count++;
+                    ++count;
                 
                 int popStart = j - numWords * n;
                 
@@ -36,10 +36,10 @@ public:
                     string popWord = s.substr(popStart, n);
                     
                     if (localStates.find(popWord) != localStates.end()) {
-                        localStates[popWord]++;
+                        ++localStates[popWord];
                         if (localStates[popWord] > 0) {
                             // Pop away an useful word
-                            count--;
+                            --count;
                         }
                     }
                 }

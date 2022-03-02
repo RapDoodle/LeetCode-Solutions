@@ -8,7 +8,7 @@ public:
         int m = nums.size();
         int ans = nums[m - 3] + nums[m - 2] + nums[m - 1];
         
-        for (int i = 0; i < m - 2; i++) {
+        for (int i = 0; i < m - 2; ++i) {
             int j = i + 1, k = m - 1;
             
             while (j < k) {
@@ -18,10 +18,10 @@ public:
                     return sum;
                 } else if (sum > target) {
                     // Decrease sum by moving k to the left
-                    k--;
+                    --k;
                 } else if (sum < target) {
                     // Increase sum by moving j to the right
-                    j++;
+                    ++j;
                 }
                 
                 if (abs(sum - target) < abs(ans - target))

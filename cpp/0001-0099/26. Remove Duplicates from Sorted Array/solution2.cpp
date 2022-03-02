@@ -7,13 +7,13 @@ public:
         auto i = nums.begin(), j = i + 1;
         while (i != nums.end() && j != nums.end()) {
             if (*i != *j) {
-                i++;
-                j++;
+                ++i;
+                ++j;
             } else {
                 while (j != nums.end() && *i == *j)
-                    j++;
+                    ++j;
                 nums.erase(i + 1, j);
-                i++;
+                ++i;
                 j = i + 1;
             }
         }

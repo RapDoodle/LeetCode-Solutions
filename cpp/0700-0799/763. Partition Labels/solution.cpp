@@ -5,14 +5,14 @@ public:
         // The first pass: iterate through the string to find
         // the index of each characters' last occurence
         unordered_map<char, int> last;
-        for (int i = 0; i < s.length(); i++)
+        for (int i = 0; i < s.length(); ++i)
             last[s[i]] = i;
         
         // The second pass: partition
         vector<int> ans;
         int size = 0, end = last[s[0]];
-        for (int i = 0; i < s.length(); i++) {
-            size++;
+        for (int i = 0; i < s.length(); ++i) {
+            ++size;
             if (last[s[i]] > end) {
                 // The character's last index is beyond the 
                 // current end (range).

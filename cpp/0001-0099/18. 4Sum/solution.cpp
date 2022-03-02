@@ -12,14 +12,14 @@ public:
         
         // Four sum
         int m = nums.size();
-        for (int a = 0; a < m - 3; a++) {
+        for (int a = 0; a < m - 3; ++a) {
             // Skip duplicates. Only use the left-most element in the 
             // presence of elements with the same value
             if (a > 0 && nums[a] == nums[a - 1])
                 continue;  
             
             // Three sum
-            for (int b = a + 1; b < m - 2; b++) {
+            for (int b = a + 1; b < m - 2; ++b) {
                 if (b > 1 && b - a > 1 && nums[b] == nums[b - 1])
                     continue;
                 
@@ -39,7 +39,7 @@ public:
                         ans.push_back(v);
                         
                         do {
-                            c++;
+                            ++c;
                         } while (c < d && nums[c] == nums[c - 1]);
                     } else if (sum > target) {
                         // The sum is too large
@@ -48,7 +48,7 @@ public:
                     } else {
                         // The sum is too small
                         // increase the sum by moving c to the right
-                        c++;
+                        ++c;
                     }
                 }
             }

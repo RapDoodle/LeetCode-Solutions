@@ -21,12 +21,12 @@ public:
         
         // Append the letters for the first digit
         vector<char> letters = letterMap.at(digits[0]);
-        for (int j = 0; j < letters.size(); j++)
+        for (int j = 0; j < letters.size(); ++j)
             combinations.push_back(string(1, letters[j]));
         
         // When length >= 2, for every digit, 
         // add every letter in `letters` to every string
-        for (int i = 1; i < digits.length(); i++) {
+        for (int i = 1; i < digits.length(); ++i) {
             vector<string> newCombinations;
             vector<char> letters = letterMap.at(digits[i]);
             for (const string& comb: combinations)

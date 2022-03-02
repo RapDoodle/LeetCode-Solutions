@@ -19,7 +19,7 @@ public:
         ListNode *iNode = &dummy, *jNode = head;
         
         // Create a distance of n from the dummy node (iNode)
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; ++i)
             jNode = jNode->next;
         
         // Move iNode and jNode simultaneously until reaching the 

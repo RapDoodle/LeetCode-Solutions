@@ -9,11 +9,11 @@ public:
         int satisfied = 0, i = g.size() - 1, j = s.size() - 1;
         while (i >= 0 && j >= 0) {
             if (g[i] <= s[j]) {
-                satisfied++;
+                ++satisfied;
                 // The current bag of cookies has been used
-                j--;
+                --j;
             }
-            i--;
+            --i;
         }
         
         return satisfied;

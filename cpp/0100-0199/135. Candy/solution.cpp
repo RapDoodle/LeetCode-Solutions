@@ -8,7 +8,7 @@ public:
         // Relative to the left
         vector<int> left(n);
         left[0] = 1;
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; ++i) {
             if (ratings[i] > ratings[i-1])
                 left[i] = left[i-1] + 1;
             else
@@ -26,7 +26,7 @@ public:
         }
         
         int sum = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             sum += max(left[i], right[i]);
         }
         

@@ -19,7 +19,7 @@ public:
         int m = 0;
         while (node != nullptr) {
             node = node->next;
-            m++;
+            ++m;
         }
         
         // The new head of the linked list, a dummy node

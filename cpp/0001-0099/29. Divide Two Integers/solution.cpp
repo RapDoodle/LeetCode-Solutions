@@ -15,7 +15,7 @@ public:
         while (dvd - dvs >= 0) {
             int count = 0;
             while (dvd - (dvs << count << 1) >= 0)
-                count++;
+                ++count;
             
             quot += 1 << count;
             dvd -= dvs << count;

@@ -8,14 +8,14 @@ public:
         int i = -1, j = 0;
         while (j < n) {
             if (nums[j] == val) {
-                j++;
+                ++j;
                 continue;
             }
             if (j - i >= 2) {
                 nums[i + 1] = nums[j];
             }
-            i++;
-            j++;
+            ++i;
+            ++j;
         }
         
         return i + 1;

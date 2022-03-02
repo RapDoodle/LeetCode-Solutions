@@ -16,11 +16,11 @@ public:
         // |---------|
         // c is 
         int skip = 0, n = intervals.size(), prevEnd = intervals[0][1];
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; ++i) {
             // Check for overlapping
             if (intervals[i][0] < prevEnd) {
                 // c < b, indicates overlapping
-                skip++;
+                ++skip;
                 
                 // Remove the interval whose upper bound is greater,
                 // so that there is a smaller chance of overlapping

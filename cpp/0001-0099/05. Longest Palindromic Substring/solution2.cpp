@@ -5,7 +5,7 @@ public:
             return "";
 
         int m = s.length(), maxOfst = 0, l = 0;
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m; ++i) {
             int ofst = max(expand(s, i, i), expand(s, i, i + 1));
             if (ofst > maxOfst) {
                 maxOfst = ofst;
@@ -20,8 +20,8 @@ public:
             return 0;
         int m = s.length();
         while (l >= 0 && r < m && s[l] == s[r]) {
-            l--;
-            r++;
+            --l;
+            ++r;
         }
         return r - l - 1;
     }

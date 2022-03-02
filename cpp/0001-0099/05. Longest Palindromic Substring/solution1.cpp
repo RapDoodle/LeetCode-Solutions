@@ -8,7 +8,7 @@ public:
         vector<vector<int>> dp(m, vector<int>(m));
 
         // Fill all diagonal with 1
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < m; ++i)
             dp[i][i] = 1;
 
         // Check for substrings of length > 2
