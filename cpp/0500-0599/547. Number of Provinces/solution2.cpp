@@ -1,12 +1,12 @@
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
-        vector<int> visited(isConnected.size(), 0);
+        vector<bool> visited(isConnected.size(), false);
         queue<int> q;
         int provCount = 0;
         for (int i = 0; i < isConnected.size(); ++i) {
             if (!visited[i]) {
-                visited[i] = 1;
+                visited[i] = true;
                 q.push(i);
                 while (!q.empty()) {
                     int j = q.front();

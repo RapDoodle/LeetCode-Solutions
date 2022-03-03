@@ -4,7 +4,7 @@ public:
     /* BFS */
     int maxAreaOfIsland(vector<vector<int>>& grid) {
         int rows = grid.size(), cols = grid[0].size(), maxArea = 0;
-        vector<vector<int>> visited(rows, vector<int>(cols));
+        vector<vector<bool>> visited(rows, vector<bool>(cols, false));
         queue<pair<int, int>> q;
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
@@ -24,7 +24,7 @@ public:
                             visited[p.first][p.second] || !grid[p.first][p.second])
                             continue;
                         if (!visited[p.first][p.second]) {
-                            visited[p.first][p.second] = 1;
+                            visited[p.first][p.second] = true;
                             ++area;
                             for (int k = 0; k < 4; ++k)
                                 q.push(make_pair(p.first + directions[k], p.second + directions[k+1]));
