@@ -18,6 +18,8 @@ public:
         for (int c = 0; c < n; ++c) {
             if (cols[c] || posDiag[r+c] || negDiag[r-c+n-1])
                 continue;
+            
+            // Set the current states
             cols[c] = true;
             posDiag[r+c] = true;
             negDiag[r-c+n-1] = true;
@@ -26,6 +28,7 @@ public:
             // Find the queen for the next row
             backtrack(r+1, board, n, cols, posDiag, negDiag, ans);
             
+            // Reset the current states
             cols[c] = false;
             posDiag[r+c] = false;
             negDiag[r-c+n-1] = false;
