@@ -12,10 +12,22 @@ public:
         //  2. Each column must have exactly one queen
         //  3. Each diagonals must have exactly one queen
         //  4. Indexes along the positive diagonal satisfy:
-        //      r + c = k, where k is a constant
+        //      r + c = k, where k is a constant.
+        //      Ensures there is exactly one queen in the 
+        //      positive diagonal direction (/)
         //  5. Indexes along the negative diagonal satisfy:
         //      r - c = k, where k is a constant
+        //      Ensures there is exactly one queen in the 
+        //      negative diagonal direction (\)
         for (int c = 0; c < n; ++c) {
+            // Check for:
+            //  1. Each column must have exactly one queen
+            //  2. Each positive diagonal direction have 
+            //     exactly one queen.
+            //  3. Each positive diagonal direction have 
+            //     exactly one queen. Note: because r-c 
+            //     ranges from -(n-1) to n-1, we add n-1
+            //     to r-c to ensure every index is >= 0
             if (cols[c] || posDiag[r+c] || negDiag[r-c+n-1])
                 continue;
             
