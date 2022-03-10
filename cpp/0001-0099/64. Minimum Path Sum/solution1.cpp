@@ -9,9 +9,8 @@ public:
         
         // For the first row, each grid can only be reached
         // through moving right.
-        for (int c = 1; c < n; ++c) {
+        for (int c = 1; c < n; ++c)
             dp[0][c] = dp[0][c-1] + grid[0][c];
-        }
         
         // For the first row, each grid can only be reached
         // through moving down.
@@ -24,5 +23,7 @@ public:
                 dp[r][c] = min(dp[r][c-1], dp[r-1][c]) + grid[r][c];
         
         return dp[m-1][n-1];
+        
+        // A more memory-efficient solution can be found in solution2.cpp
     }
 };
