@@ -2,7 +2,6 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n = nums.size();
-        if (n == 0);
         
         // For each step, we need to decide whether
         // or not to rob the current house.
@@ -27,6 +26,6 @@ public:
             prev1 = temp;
         }
         
-        return  prev1;
+        return prev1;
     }
 };
