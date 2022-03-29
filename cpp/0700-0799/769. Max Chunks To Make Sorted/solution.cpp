@@ -1,7 +1,6 @@
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
-        
         int chunks = 0, curMax = 0;
         for (int i = 0; i < arr.size(); ++i) {
             // When the current maximum is greater than the 
