@@ -11,38 +11,8 @@
 class Solution {
 public:
     /* Time complexity O(n*logk) */
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        // Merge two sorted linked list
-        ListNode* head = new ListNode();
-        ListNode* curr = head;
-        
-        while (l1 != nullptr || l2 != nullptr) {
-            if (l1 == nullptr) {
-                curr->next = l2;
-                break;
-            }
-            
-            if (l2 == nullptr) {
-                curr->next = l1;
-                break;
-            }
-            
-            if (l1->val <= l2->val) {
-                curr->next = l1;
-                l1 = l1->next;
-            } else {
-                curr->next = l2;
-                l2 = l2->next;
-            }
-            
-            curr = curr->next;
-        }
-        return head->next;
-    }
-    
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         int k = lists.size();
-        
         if (k == 0)
             return nullptr;
         
@@ -77,5 +47,32 @@ public:
         }
         
         return lists[0];
+    }
+private:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        // Merge two sorted linked list
+        ListNode* head = new ListNode();
+        ListNode* curr = head;
+        
+        while (l1 != nullptr || l2 != nullptr) {
+            if (l1 == nullptr) {
+                curr->next = l2;
+                break;
+            }
+            if (l2 == nullptr) {
+                curr->next = l1;
+                break;
+            }
+            if (l1->val <= l2->val) {
+                curr->next = l1;
+                l1 = l1->next;
+            } else {
+                curr->next = l2;
+                l2 = l2->next;
+            }
+            
+            curr = curr->next;
+        }
+        return head->next;
     }
 };
