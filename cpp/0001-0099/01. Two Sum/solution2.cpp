@@ -1,18 +1,19 @@
 class Solution {
 public:
-    /* Using an unordered_map */ 
+    /* The brute force approach */
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> mapping;
-        int n = nums.size();
-        for (int i = 0; i < n; ++i) {
-            int x = nums[i];
-            int y = target - x;
-            auto it = mapping.find(y);
-            if (it != mapping.end())
-                return {it->second, i};
-            mapping[x] = i;
+        int y;
+        vector<int> v;
+        for (int i=0; i<nums.size()-1; ++i) {
+            y = target - nums[i];
+            for (int j=i+1; j<nums.size(); ++j) {
+                if (nums[j] == y) {
+                    v.push_back(i);
+                    v.push_back(j);
+                    return v;
+                }
+            }
         }
-        return {};
+        return v;  // Return an empty vector
     }
 };
-
