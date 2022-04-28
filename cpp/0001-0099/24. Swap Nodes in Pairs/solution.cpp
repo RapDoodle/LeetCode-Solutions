@@ -16,9 +16,7 @@ public:
         
         // Link: curr --> l1 --> l2 --> l3
         ListNode *l1, *l2, *l3;
-        while (curr != nullptr && 
-               (l1 = curr->next) != nullptr && 
-               (l2 = l1->next) != nullptr) {
+        while (curr && (l1 = curr->next) && (l2 = l1->next)) {
             l3 = l2->next;
             
             // Link: curr --> l2 --> l1 --> l3
@@ -29,6 +27,7 @@ public:
             // Move on to the node whose next node is unprocessed
             curr = l1;
         }
+        
         return dummy.next;
     }
 };
