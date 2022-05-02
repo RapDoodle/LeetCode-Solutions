@@ -12,25 +12,21 @@
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
-        return dfs(root, targetSum, 0);
-    }
-private:
-    bool dfs(TreeNode* root, const int& tarSum, int currSum) {
         // No root-to-leaf path when the root is empty
         if (!root)
             return false;
         
         // Calculate the new sum
-        int sum = currSum + root->val;
+        targetSum -= root->val;
         
         // When reaching the leaf node, check whether
         // we found the target sum.
-        if (!root->left && !root->right && sum == tarSum)
+        if (!root->left && !root->right && targetSum == 0)
             return true;
         
         // If either path returns true, then there 
         // exists at least one root-to-leaf path
-        return dfs(root->left, tarSum, sum) ||
-            dfs(root->right, tarSum, sum);
+        return hasPathSum(root->left, targetSum) ||
+            hasPathSum(root->right, targetSum);
     }
 };
