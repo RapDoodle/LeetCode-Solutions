@@ -21,7 +21,6 @@ public:
             vector<TreeNode*> next;
             int n = curr.size() / 2;
             for (int i = 0; i < n; ++i) {
-                cout << 1;
                 TreeNode *left = curr[i], *right = curr[curr.size()-i-1];
                 // Reaching the end at both sides
                 if (!left && !right)
