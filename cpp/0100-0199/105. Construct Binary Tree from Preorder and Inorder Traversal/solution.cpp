@@ -24,7 +24,7 @@ public:
     
 private:
     TreeNode* buildSubtree(vector<int>& preorder, vector<int>& inorder, 
-                           unordered_map<int, int>& index,
+                           const unordered_map<int, int>& index,
                            int preorderBeginIdx, int preorderEndIdx, 
                            int inorderBeginIdx, int inorderEndIdx) {
         if (inorderBeginIdx > inorderEndIdx)
@@ -40,7 +40,7 @@ private:
         TreeNode* curr = new TreeNode(preorder[preorderBeginIdx]);
         
         // Locate the position of the current node in the inorder list
-        int nodeIdx = index[preorder[preorderBeginIdx]];
+        int nodeIdx = index.find(preorder[preorderBeginIdx])->second;
         
         // Calculate the size of the left-subtree
         int leftSubtreeSize = nodeIdx - inorderBeginIdx;
