@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /* Dynamic programming */
     int rob(vector<int>& nums) {
         int n = nums.size();
         
@@ -10,6 +11,8 @@ public:
         // house, we get dp[i-1]. Therefore, the
         // transfer function is:
         // dp[i] = max(dp[i-1], nums[i-1] + dp[i-2])
+        // Note that dp[0] is reserved for the
+        // "house" left to the first house
         vector<int> dp(n+1, 0);
         
         // dp[0] = 0 because there isn't a house to
