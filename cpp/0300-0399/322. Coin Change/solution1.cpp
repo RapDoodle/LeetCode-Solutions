@@ -1,12 +1,16 @@
 class Solution {
 public:
+    /* Dynamic programming */
     int coinChange(vector<int>& coins, int amount) {
-        // For each value in [1, amount], determine 
+        // For each value in [1..amount], determine 
         // whether adding the current coin reduces
         // the totoal number of coins needed.
         vector<int> dp(amount+1, amount+1);
         dp[0] = 0;
         for (int i = 1; i <= amount; ++i) {
+            // For each subproblem, we find the minimum
+            // number of coins required for a total 
+            // amount of i, where i <= amount
             for (auto const& coin : coins) {
                 int diff = i-coin;
                 if (diff >= 0)
