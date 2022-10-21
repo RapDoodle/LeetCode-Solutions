@@ -13,7 +13,13 @@ public:
                     ++ones;
             
             // For each valid position, check if adding the
-            // current string results in a longer subset
+            // current string results in a longer subset.
+            // The recurrence equation is
+            //  dp[i][j][k] = max(dp[i][j][k-1], 1 + dp[i-zeros][j-ones][k-1])
+            // where k is the index of the string
+            // Each loop must start from the end because
+            // we are based on the results from the previous
+            // string (the 2D dp array is compressed from 3D)
             for (int i = m; i >= zeros; --i)
                 for (int j = n; j >= ones; --j)
                     dp[i][j] = max(dp[i][j], 1 + dp[i-zeros][j-ones]);
