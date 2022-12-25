@@ -1,6 +1,6 @@
 class Solution {
 public:
-    /* Dynamic programming */
+    /* Dynamic programming (compressed) */
     bool canPartition(vector<int>& nums) {
         int sum = accumulate(nums.begin(), nums.end(), 0);
         
@@ -12,7 +12,7 @@ public:
         int target = sum / 2, n = nums.size();
 
         // Dynamic programming.
-        vector<vector<bool>> dp(nums.size()+1, vector<bool>(target+1, false));
+        vector<vector<bool>> dp(2, vector<bool>(target+1, false));
 
         // Boundary condition: The subset of an empty set can reach a sum of 0
         dp[0][0] = true;
@@ -21,17 +21,18 @@ public:
         // include the current element. The recurrence is:
         //  dp[i, j] = dp[i-1, j] || dp[i-1, j-nums[i]] when j >= nums[i]
         //             dp[i][j] = dp[i-1][j] when otherwise
-        for (int i = 1; i <= nums.size(); ++i) {
+        for (int i = 0; i < nums.size(); ++i) {
             for (int j = 1; j <= target; ++j)
                 // Note: i-1 is to account for the offset that the first element
                 // in the DP array starts at 1.
-                if (j >= nums[i-1])
-                    dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i-1]];
+                if (j >= nums[i])
+                    dp[1][j] = dp[0][j] || dp[0][j-nums[i]];
                 else
-                    dp[i][j] = dp[i-1][j];
+                    dp[1][j] = dp[0][j];
             // Return immediately once once a subset can reach the target
-            if (dp[i][target])
+            if (dp[1][target])
                 return true;
+            swap(dp[0], dp[1]);
         }
         return false;
     }
