@@ -18,8 +18,10 @@ public:
         int i = m, j = n;
         while (i > 0 || j > 0) {
             if (i == 0) {
+                // Add the remaining characters in str2
                 scs += str2[j--];
             } else if (j == 0) {
+                // Add the remaining characters in str1
                 scs += str1[i--];
             } else {
                 if (str1[i] == str2[j]) {
