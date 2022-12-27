@@ -50,7 +50,6 @@ public:
             }
         }
 
-        // return numPaths[n];
         return numPaths[1];
     }
 };
