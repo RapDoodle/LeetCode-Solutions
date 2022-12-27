@@ -1,4 +1,7 @@
 class Solution {
+private:
+    typedef pair<double, int> pi;
+
 public:
     /* Dijsktra's Algorithm */
     double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
@@ -11,42 +14,43 @@ public:
         }
 
         // Run the modified Dijsktra's algorithm
-        vector<double> D(n, DBL_MAX);
+        priority_queue<pi, vector<pi>, greater<pi>> q;
+        vector<double> dist(n, DBL_MAX);
         vector<bool> finalized(n, false);
-        D[start] = 0;
+        dist[start] = 0;
+        q.emplace(0.0, start);
         
-        for (int _ = 0; _ < n; ++_) {
+        while (!q.empty()) {
             // Look for the node with the smallest estimate among 
             // unfinalized nodes
-            int minNodeIdx = -1;
-            double minNodeVal = DBL_MAX;
-            for (int i = 0; i < n; ++i) {
-                if (!finalized[i] && minNodeVal >= D[i]) {
-                    minNodeIdx = i;
-                    minNodeVal = D[i];
-                }
-            }
+            const auto [uDist, u] = q.top();
+            q.pop();
+            
+            // Avoid infinite loop
+            if (finalized[u])
+                continue;
             
             // Finalize the node
-            finalized[minNodeIdx] = true;
+            finalized[u] = true;
 
             // Check if the current node is not reachable from source
             // (indicated by having DBL_MAX)
-            if (abs(minNodeVal - DBL_MAX) < 1e-5)
+            if (abs(uDist - DBL_MAX) < 1e-5)
                 continue;
 
             // Visit all its neighbors
-            for (const auto& edge : graph[minNodeIdx]) {
-                // minNodeIdx: current node
-                // edge.first: destination node
-                // edge.second: edge cost
-                double estimate = D[minNodeIdx] + edge.second;
-                if (D[edge.first] > estimate)
+            for (const auto& [v, w] : graph[u]) {
+                // u: current node
+                // v: destination node
+                // w: edge cost
+                double estimate = dist[u] + w;
+                if (dist[v] > estimate)
                     // A shorter path is found, update the estimate
-                    D[edge.first] = estimate;
+                    dist[v] = estimate;
+                    q.emplace(estimate, v);
             }
         }
         
-        return (abs(D[end] - DBL_MAX) < 1e-5) ? 0.0 : pow(0.5, D[end]);
+        return (abs(dist[end] - DBL_MAX) < 1e-5) ? 0.0 : pow(0.5, dist[end]);
     }
 };
