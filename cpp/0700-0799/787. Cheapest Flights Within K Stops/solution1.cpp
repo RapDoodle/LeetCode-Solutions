@@ -3,10 +3,6 @@ private:
     const int INF = INT_MAX/2;
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
-        // Convert to adjacency list representation
-        vector<vector<pair<int, int>>> graph(n);
-        
-
         vector<vector<int>> dp(k+2, vector<int>(n, INF));
         dp[0][src] = 0;
         for (int t = 1; t <= k+1; ++t) {
