@@ -2,7 +2,7 @@ class Solution {
 private:
     const int MOD = 1e9 + 7;
 public:
-    /* Dijsktra's Algorithm + DP */
+    /* Dijkstra's Algorithm + DP */
     int countPaths(int n, vector<vector<int>>& roads) {
         // Convert to adjacency list representation
         vector<vector<pair<int, int>>> graph(n);
@@ -14,7 +14,7 @@ public:
         // Keep track of the number of ways to reach a node
         vector<int> ways(n, 0);
 
-        // Run the modified Dijsktra's algorithm
+        // Run the modified Dijkstra's algorithm
         vector<long> D(n, LONG_MAX);
         vector<bool> finalized(n, false);
         ways[0] = 1;

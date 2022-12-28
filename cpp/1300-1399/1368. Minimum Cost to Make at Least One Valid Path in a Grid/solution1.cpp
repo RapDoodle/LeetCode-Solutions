@@ -6,7 +6,7 @@ private:
     static constexpr int dc[] = {1, -1, 0, 0};
 
 public:
-    /* Dijsktra's algorithm */
+    /* Dijkstra's algorithm */
     int minCost(vector<vector<int>>& grid) {
         int m = grid.size(), n = grid[0].size(), len = m*n;
         vector<int> dist(len, INT_MAX);

@@ -12,7 +12,7 @@ public:
             graph[edge[1]].emplace_back(make_pair(edge[0], edge[2]));
         }
 
-        // Dijsktra's algorithm. Find the minimum cost from n to 
+        // Dijkstra's algorithm. Find the minimum cost from n to 
         // all other nodes.
         // Pair: (distance, nodeId)
         priority_queue<pi, vector<pi>, greater<pi>> q;

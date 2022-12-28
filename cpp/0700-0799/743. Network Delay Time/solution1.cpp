@@ -1,13 +1,13 @@
 class Solution {
 public:
-    /* Dijsktra's algorithm */
+    /* Dijkstra's algorithm */
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
         vector<vector<pair<int, int>>> graph(n+1);
         for (const auto& edge : times) {
             graph[edge[0]].emplace_back(make_pair(edge[1], edge[2]));
         }
 
-        // Dijsktra's algorithm
+        // Dijkstra's algorithm
         vector<int> dist(n+1, INT_MAX);
         dist[k] = 0;
         vector<bool> visited(n+1, false);

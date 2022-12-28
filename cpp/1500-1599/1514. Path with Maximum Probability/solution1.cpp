@@ -3,7 +3,7 @@ private:
     typedef pair<double, int> pi;
 
 public:
-    /* Dijsktra's Algorithm */
+    /* Dijkstra's Algorithm */
     double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
         // Convert to adjacency list representation
         vector<vector<pair<int, double>>> graph(n);
@@ -13,7 +13,7 @@ public:
             graph[edges[i][1]].emplace_back(make_pair(edges[i][0], logProb));
         }
 
-        // Run the modified Dijsktra's algorithm
+        // Run the modified Dijkstra's algorithm
         priority_queue<pi, vector<pi>, greater<pi>> q;
         vector<double> dist(n, DBL_MAX);
         vector<bool> finalized(n, false);
