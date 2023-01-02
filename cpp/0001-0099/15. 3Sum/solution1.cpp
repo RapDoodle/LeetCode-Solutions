@@ -20,7 +20,7 @@ public:
                 int sum = nums[i] + nums[j] + nums[k];
                 if (sum == 0) {
                     vector<int> v{nums[i], nums[j], nums[k]};
-                    ans.push_back(v);
+                    ans.emplace_back(v);
                     do {
                         j++;
                     } while (j < k && nums[j] == nums[j - 1]);
