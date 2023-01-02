@@ -7,7 +7,7 @@ public:
         // Sort the array so that we can easily find duplicates
         sort(nums.begin(), nums.end());
         
-        for (int i = 0; i < m - 2; ++i) {
+        for (int i = 0; i < m - 2; i++) {
             // Skip duplicates. Only use the left-most element in the 
             // presence of elements with the same value
             if (i > 0 && nums[i] == nums[i - 1])
@@ -22,9 +22,8 @@ public:
                     vector<int> v{nums[i], nums[j], nums[k]};
                     ans.push_back(v);
                     do {
-                        ++j;
-                    }
-                    while (j < k && nums[j] == nums[j - 1]);
+                        j++;
+                    } while (j < k && nums[j] == nums[j - 1]);
                 } else if (sum > 0) {
                     // The sum is too large, need to reduce the sum
                     // Decrease k
@@ -32,7 +31,7 @@ public:
                 } else {
                     // The sum is too small, need to increase the sum
                     // Increase j
-                    ++j;
+                    j++;
                 }
             }
         }
