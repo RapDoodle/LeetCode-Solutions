@@ -4,15 +4,16 @@ private:
     
     void in2out() {
         // The stack `out` contains the order of the `in` stack  
-        // in reverse
-        // When the `out` stack is not empty, terminate the 
-        // function call as it adds elemenets to the front of 
-        // the queue.
+        // in reverse.
+        // When the `out` stack is not empty, wait until the `out`
+        // is empty before reversing the elements in `in` to ensure
+        // the order is correct.
         if (!out.empty())
             return;
         
         // Pop every element in the `in` stack and push it to
-        // the `out` stack. [1,2,3]<-top becomes [3,2,1]<-top
+        // the `out` stack. [1,2,3]<-top becomes [3,2,1]<-top.
+        // `out` must be empty before popping elements from `in`.
         while (!in.empty()) {
             out.push(in.top());
             in.pop();
@@ -22,6 +23,8 @@ public:
     MyQueue() {}
     
     void push(int x) {
+        // Note: Elements are not transferred to `out` until
+        // either pop or peek in invoked, and `out` is empty.
         in.push(x);
     }
     
