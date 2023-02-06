@@ -12,8 +12,16 @@
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        // Create a hash map for quick lookup (index in inorder)
+        // Observations:
+        //  1. The first element in preorder traversal is always
+        //     the root node.
+        //  2. By locating the root node's index i in inorder traversal,
+        //     we can determine portions of the left subtree ([lo, i-1])
+        //     and portions of the right subtree ([i+1, hi])
+        //  3. The above two observations are also true for each subtree.
         int n = inorder.size();
+
+        // Create a hash map for quick index lookup
         unordered_map<int, int> index;
         for (int i = 0; i < n; ++i)
             index[inorder[i]] = i;
@@ -39,13 +47,13 @@ private:
         // Instantiate the current node
         TreeNode* curr = new TreeNode(preorder[preorderBeginIdx]);
         
-        // Locate the position of the current node in the inorder list
+        // Locate the position of the root node in inorder traversal
         int nodeIdx = index.find(preorder[preorderBeginIdx])->second;
         
         // Calculate the size of the left-subtree
         int leftSubtreeSize = nodeIdx - inorderBeginIdx;
         
-        // Construct the left-subtree and right-subtree
+        // Recursively construct the left-subtree and right-subtree
         curr->left = buildSubtree(preorder, inorder, index, 
                                   preorderBeginIdx+1, preorderBeginIdx + leftSubtreeSize, 
                                   inorderBeginIdx, nodeIdx-1);
