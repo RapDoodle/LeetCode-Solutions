@@ -3,6 +3,12 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int m = matrix.size()-1, n = matrix[0].size()-1;
         
+        // Because the first integer of each row is always greater
+        // than the last integer of the previous row, we can
+        // first find the row r where matrix[r][0] < target.
+        // After determining the row r, we can perform a binary search
+        // on that row to determine whether target is in the matrix.
+        
         // Binary search on rows between [lo, hi]
         int lo = 0, hi = m, mid;
         while (lo <= hi) {
