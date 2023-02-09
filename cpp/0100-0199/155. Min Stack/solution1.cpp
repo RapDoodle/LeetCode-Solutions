@@ -3,8 +3,8 @@ private:
     // Two stacks:
     //  s: The original stack
     //  minS: The stack for the minimum values. Values are 
-    //        only pushed to the stack when a smaller value
-    //        is found.
+    //    only pushed to the min stack when a value 
+    //    smaller or equal to the current minimum is found.
     stack<int> s, minS;
 public:
     MinStack() {}
