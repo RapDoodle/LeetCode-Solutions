@@ -11,37 +11,37 @@
  */
 class Solution {
 public:
+    /* DFS */
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<vector<int>> ans;
+        vector<vector<int>> paths;
         
         // `nodes` keep track of the all the node values  
         // along the path 
         vector<int> nodes;
-        dfs(root, targetSum, nodes, ans);
-        return ans;
+        dfs(root, targetSum, nodes, paths);
+        return paths;
     }
 private:
-    void dfs(TreeNode* root, int tarSum, 
-             vector<int> nodes, vector<vector<int>>& ans) {
+    void dfs(TreeNode* root, int taretSum, 
+             vector<int>& currPath, vector<vector<int>>& paths) {
         // No root-to-leaf path when the root is empty
         if (!root)
             return;
         
-        tarSum -= root->val;
-        nodes.emplace_back(root->val);
+        taretSum -= root->val;
+        currPath.emplace_back(root->val);
         
         // When reaching the leaf node, check whether
         // we found the target sum.
-        if (!root->left && !root->right && tarSum == 0) {
-            ans.emplace_back(nodes);
-            return;
+        if (!root->left && !root->right && taretSum == 0) {
+            paths.emplace_back(currPath);
         }
         
         // Continue to backtrack with DFS
-        dfs(root->left, tarSum, nodes, ans);
-        dfs(root->right, tarSum, nodes, ans);
+        dfs(root->left, taretSum, currPath, paths);
+        dfs(root->right, taretSum, currPath, paths);
         
         // Unset the current state
-        nodes.pop_back();
+        currPath.pop_back();
     }
 };

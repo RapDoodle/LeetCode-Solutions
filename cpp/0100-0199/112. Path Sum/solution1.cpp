@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    /* DFS */
     bool hasPathSum(TreeNode* root, int targetSum) {
         // No root-to-leaf path when the root is empty
         if (!root)
@@ -19,13 +20,13 @@ public:
         // Calculate the new sum
         targetSum -= root->val;
         
-        // When reaching the leaf node, check whether
+        // Upon reaching the leaf node, check whether
         // we found the target sum.
         if (!root->left && !root->right && targetSum == 0)
             return true;
         
-        // If either path returns true, then there 
-        // exists at least one root-to-leaf path
+        // If either path returns true, there exists
+        // at least one desired root-to-leaf path
         return hasPathSum(root->left, targetSum) ||
             hasPathSum(root->right, targetSum);
     }
