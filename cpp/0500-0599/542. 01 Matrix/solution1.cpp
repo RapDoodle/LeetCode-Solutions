@@ -1,10 +1,10 @@
 class Solution {
 public:
-    /* Dynamic-programming */
+    /* Dynamic programming */
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         int rows = mat.size(), cols = mat[0].size();
         
-        // Transfer function:
+        // Recurrence:
         //  dp[r][c] = min(dp[r-1][c] + 1, dp[r][c-1] + 1, 
         //                 dp[r+1][c] + 1, dp[r][c+1] + 1), when mat[r][c] > 0
         //             0, when mat[r][c] = 0

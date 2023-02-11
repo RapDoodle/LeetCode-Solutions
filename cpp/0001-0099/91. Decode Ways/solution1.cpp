@@ -1,11 +1,12 @@
 class Solution {
 public:
+    /* Dynamic programming */
     int numDecodings(string s) {
         int n = s.length();
         vector<int> dp(n+1, 0);
         dp[0] = 1;
         
-        // Dynamic programming transfer function:
+        // Recurrence:
         //  dp[i] = dp[i-1],
         //              when only the current digit can be decoded
         //        = dp[i-2],

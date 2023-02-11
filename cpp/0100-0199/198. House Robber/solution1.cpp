@@ -9,7 +9,7 @@ public:
         // If we rob the current house, we get
         // nums[i] + dp[i-2]. If we don't rob the
         // house, we get dp[i-1]. Therefore, the
-        // transfer function is:
+        // recurrence relation is:
         // dp[i] = max(dp[i-1], nums[i-1] + dp[i-2])
         // Note that dp[0] is reserved for the
         // "house" left to the first house

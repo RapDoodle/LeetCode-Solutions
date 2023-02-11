@@ -1,7 +1,8 @@
 class Solution {
 public:
+    /* Dynamic programming */
     int minPathSum(vector<vector<int>>& grid) {
-        // The transfer function:
+        // The recurrence:
         //  dp[r][c] = min(dp[r][c-1], dp[r-1][c]) + grid[r][c] 
         int m = grid.size(), n = grid[0].size();
         vector<int> dp(n, 0);

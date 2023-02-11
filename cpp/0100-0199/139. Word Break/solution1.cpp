@@ -1,9 +1,10 @@
 class Solution {
 public:
+    /* Dynamic programming */
     bool wordBreak(string s, vector<string>& wordDict) {
         int n = s.length();
         
-        // Dynamic programming transfer function:
+        // Recurrence:
         //  dp[i] = dp[i-len], when s[i-len, i] is in wordDict
         //        = false, when s[i-len, i] is not in wordDict
         //        = true, when i=0 (the initial state)
