@@ -4,23 +4,23 @@ public:
         vector<int> perm;
         vector<vector<int>> ans;
         
-        // Create a hash map that keep track of the 
+        // Create a hash map that keeps track of the 
         // occurrences of each digit
         unordered_map<int, int> count;
-        for (const auto num : nums) {
+        for (const auto num : nums)
             if (count.find(num) == count.end())
                 count[num] = 1;
             else
                 ++count[num];
-        }
         
         backtrack(perm, count, ans, nums.size());
         
         return ans;
     }
+
 private:
     void backtrack(vector<int>& perm, unordered_map<int, int>& count, 
-                   vector<vector<int>>& ans, int len) {
+                   vector<vector<int>>& ans, const int len) {
         // Reached the maximum depth
         if (perm.size() == len) {
             ans.push_back(perm);
@@ -30,7 +30,7 @@ private:
         // For each level, only use distinct elements (the keys of 
         // the hash map). This avoids creating the same subtree, which
         // leads to duplicate results. For example, nums = [1,1,2].
-        // If we were to use the two 1s, we get:
+        // If we were to use the two 1s, we get duplicate paths
         //            1             1             2
         //           / \           / \            | 
         //          1   2         1   2           1

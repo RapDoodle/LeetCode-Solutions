@@ -1,5 +1,13 @@
 class Solution {
 public:
+    /* Backtracking */
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        backtrack(nums, 0, ans);
+        return ans;
+    }
+    
+private:
     void backtrack(vector<int>& nums, int level, vector<vector<int>>& ans) {
         // Reached the maximum depth
         if (level == nums.size() - 1) {
@@ -7,7 +15,7 @@ public:
             return;
         }
         
-        // Every number left to the level-th number are "finalized"
+        // Every number left to the level-th number is "finalized"
         // in the current and subsequent recursive calls
         for (int l = level; l < nums.size(); ++l) {
             // Swap the two number. 
@@ -20,15 +28,7 @@ public:
             // When l = level, it is equivalent to no swap.
             swap(nums[l], nums[level]);
             backtrack(nums, level+1, ans);
-            
-            // Revert to the state before swap
-            swap(nums[l], nums[level]);
+            swap(nums[l], nums[level]);  // Revert the swap
         }
-    }
-    
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
-        backtrack(nums, 0, ans);
-        return ans;
     }
 };

@@ -1,5 +1,15 @@
 class Solution {
 public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<int> nums;
+        vector<vector<int>> ans;
+        
+        // Start backtracking from 1
+        backtrack(1, nums, n, k, ans);
+        return ans;
+    }
+
+private:
     void backtrack(int start, vector<int>& nums, int n, int k, vector<vector<int>>& ans) {
         // When the size has reached the defined size k
         if (nums.size() == k) {
@@ -18,18 +28,9 @@ public:
         
         // If an invalid combination occurred. 
         // For example, n = 4, k = 3. The last valid 
-        // combination is [2,3,4]. When backtracking
-        // reached [2,4], the loop won't execute.
+        // combination is [2,3,4]. Upon reaching 
+        // combination [2,4], the loop won't execute.
         // After the function ends, the last number 4
         // is popped from the list.
-    }
-    
-    vector<vector<int>> combine(int n, int k) {
-        vector<int> nums;
-        vector<vector<int>> ans;
-        
-        // Start backtracking from 1
-        backtrack(1, nums, n, k, ans);
-        return ans;
     }
 };
