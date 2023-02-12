@@ -24,8 +24,7 @@ public:
             
             // When position i and i-1 can form an integer between
             // 1 and 26
-            if (i >= 1 && s[i-1] != '0' && 
-                (s[i-1]-'0')*10+(s[i]-'0') <= 26)
+            if (i >= 1 && (s[i-1] == '1' || (s[i-1] == '2' && s[i] >= '0' && s[i] <= '6')))
                 dp += prev2;
             
             prev2 = prev1;
