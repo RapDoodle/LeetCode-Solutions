@@ -13,22 +13,30 @@ public:
         else
             return {-1, -1};
     }
-    
+
+private:
     int firstPosition(vector<int>& nums, int target) {
-        // lower: Whether or not to look for the lower bound.
-        //  Otherwise, look for the upper bound
         int l = 0, r = nums.size() - 1, idx = nums.size();
         while (l <= r) {
             int mid = l + (r - l) / 2; 
             if (nums[mid] >= target) {
-                // Even if target + 1 does not exist, the value to 
-                // the right of target's upper bound is returned 
-                // because the left pointer will continue to move
-                // to mid + 1 when nums[mid] < target.
-                // For example: target = 8, and input = [5,7,7,8,8,10]
-                // When mid = 4, l = 3, r = 5, because 8 < 9, 
-                // l = mid + 1 => nums[l] = 10. 
-                // 10 > 9, idx = 5, r = 5 - 1. l > r, the loop breaks.
+                // For upper bound search:
+                // Even if target'=(target+1) does not exist,  
+                // the value to the right of (target')'s upper 
+                // bound will be returned because the left
+                // pointer will continue to move to mid+1
+                // when nums[mid] < target.
+                // For example: target = 8, so target' = 9
+                //  and input = [5,7,7,8,8,10]
+                //               0 1 2 3 4 5
+                // Here, we look for target = 8 + 1 = 9.
+                // When l = 3, r = 5, l < r: 
+                //  nums[mid] = nums[4] = 8 < 9, 
+                //  l = mid + 1 = 5 => nums[l] = nums[5] = 10. 
+                // Now: l == r:
+                //  nums[mid] = nums[5] = 10 > 9, 
+                //  idx = 5, r = 5 - 1 = 4, l = 5
+                // Now: l > r: the loop ends.
                 idx = mid;
                 
                 // Value is too large, try to reduce the number
