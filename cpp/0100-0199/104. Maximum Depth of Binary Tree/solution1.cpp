@@ -13,11 +13,8 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) {
         // Base case: reaching nullptr
-        if (!root)
-            return 0;
-        
         // Recursive case: return the maximum of the two paths, 
-        // then plus one (the height of the current level)
-        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+        // then plus the height of the current level
+        return root ? max(maxDepth(root->left), maxDepth(root->right)) + 1 : 0;
     }
 };
