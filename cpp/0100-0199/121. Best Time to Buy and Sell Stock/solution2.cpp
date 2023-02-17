@@ -1,6 +1,6 @@
 class Solution {
 public:
-    /* Two-pointers */
+    /* Two pointers */
     int maxProfit(vector<int>& prices) {
         if (prices.size() <= 1)
             return 0;
