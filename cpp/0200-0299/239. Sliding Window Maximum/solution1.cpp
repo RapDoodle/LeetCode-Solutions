@@ -6,11 +6,13 @@ public:
         vector<int> ans(nums.size() - k + 1);
         for (int i = 0; i < nums.size(); ++i) {
             // To ensure the deque stores the indexes whose
-            // values are in decreasing order (the last element 
-            // in the deque is the smallest number in the interval, 
-            // and the left-most element is the largest):
-            //  1. from the right of the deque, pop away any 
-            //     value less than the current value
+            // values are in monotonically decreasing order
+            //  1. from the end of the deque, pop away any 
+            //     value less than the current value.
+            //     Key observation: any value less than the
+            //     current value will not have a chance to
+            //     be the maximum in subsequent intervals 
+            //     that contain the current value.
             while (!dq.empty() && nums[dq.back()] < nums[i])
                 dq.pop_back();
             
@@ -25,7 +27,7 @@ public:
             dq.push_back(i);
             
             // After reaching the window size, add the front (the 
-            // largest value i nthe interval to the result)
+            // largest value i n-th interval to the result)
             if (i >= k - 1)
                 ans[i-k+1] = nums[dq.front()];
         }
